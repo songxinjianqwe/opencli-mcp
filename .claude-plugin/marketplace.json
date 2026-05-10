@@ -1,0 +1,19 @@
+{
+  "name": "opencli-mcp",
+  "description": "Single-plugin marketplace for opencli-mcp — browser automation tools for Claude Code that reuse your existing Chrome login state.",
+  "owner": {
+    "name": "songxinjianqwe"
+  },
+  "plugins": [
+    {
+      "name": "opencli-mcp",
+      "source": {
+        "source": "github",
+        "repo": "songxinjianqwe/opencli-mcp",
+        "path": "."
+      },
+      "description": "Browser automation MCP server backed by opencli — 16 tools, automatic Chrome login state, no cookie extraction.",
+      "version": "0.1.0"
+    }
+  ]
+}

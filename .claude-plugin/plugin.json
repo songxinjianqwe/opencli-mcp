@@ -1,0 +1,11 @@
+{
+  "name": "opencli-mcp",
+  "version": "0.1.0",
+  "description": "MCP server wrapping opencli — gives Claude Code 16 browser automation tools that automatically use your existing Chrome login state (cookies, including HttpOnly).",
+  "author": {
+    "name": "songxinjianqwe"
+  },
+  "homepage": "https://github.com/songxinjianqwe/opencli-mcp",
+  "keywords": ["mcp", "browser", "automation", "opencli", "chrome"],
+  "license": "MIT"
+}

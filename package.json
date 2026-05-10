@@ -1,0 +1,39 @@
+{
+  "name": "opencli-mcp",
+  "version": "0.1.0",
+  "description": "MCP server wrapping opencli — give Claude/Cursor/Cline browser automation with your existing Chrome login state, zero extra setup.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "opencli",
+    "browser",
+    "automation",
+    "claude",
+    "agent"
+  ],
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "commonjs",
+  "main": "bin/opencli-mcp.js",
+  "bin": {
+    "opencli-mcp": "bin/opencli-mcp.js"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@jackwener/opencli": ">=1.7.0"
+  },
+  "peerDependenciesMeta": {
+    "@jackwener/opencli": {
+      "optional": false
+    }
+  }
+}
