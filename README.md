@@ -28,7 +28,7 @@ MCP server wrapping [opencli](https://github.com/jackwener/opencli) — gives Cl
 ## Install
 
 ```bash
-npm install -g opencli-mcp
+npm install -g @songxinjianqwe/opencli-mcp
 ```
 
 (or run from source: `node /path/to/opencli-mcp/bin/opencli-mcp.js`)

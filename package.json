@@ -1,7 +1,15 @@
 {
-  "name": "opencli-mcp",
+  "name": "@songxinjianqwe/opencli-mcp",
   "version": "0.1.0",
   "description": "MCP server wrapping opencli — give Claude/Cursor/Cline browser automation with your existing Chrome login state, zero extra setup.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songxinjianqwe/opencli-mcp.git"
+  },
+  "homepage": "https://github.com/songxinjianqwe/opencli-mcp",
+  "bugs": {
+    "url": "https://github.com/songxinjianqwe/opencli-mcp/issues"
+  },
   "keywords": [
     "mcp",
     "model-context-protocol",
@@ -23,7 +31,10 @@
   },
   "files": [
     "bin",
-    "README.md"
+    ".claude-plugin",
+    ".mcp.json",
+    "README.md",
+    "LICENSE"
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0"
