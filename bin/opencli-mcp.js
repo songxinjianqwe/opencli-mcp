@@ -62,8 +62,21 @@ const wrapExpr = (code) =>
 
 // ───────────────────── 启动一次性预热(daemon auto-start) ─────────────────────
 
-function ensureDaemonViaCli() {
-  return new Promise((resolve) => {
+async function ensureDaemon() {
+  // 先探测 daemon 是否已在线，避免每次启动都跑 opencli doctor 触发新 Chrome 窗口
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 3000);
+    const resp = await fetch(`${DAEMON_URL}/status`, {
+      headers: { 'X-OpenCLI': '1' },
+      signal: ctrl.signal,
+    });
+    clearTimeout(t);
+    if (resp.ok) return; // daemon 已在线，无需 doctor
+  } catch {}
+
+  // daemon 没响应，跑 opencli doctor 启动它
+  await new Promise((resolve) => {
     const env = { ...process.env, NO_PROXY: '*' };
     for (const k of ['http_proxy','https_proxy','all_proxy','HTTP_PROXY','HTTPS_PROXY','ALL_PROXY']) delete env[k];
     execFile('opencli', ['doctor'], { timeout: 10000, env, maxBuffer: 1024 * 1024 }, () => resolve());
@@ -420,8 +433,8 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
 });
 
 (async () => {
-  // 跑一次 opencli doctor 触发 daemon auto-start (如果没起)
-  await ensureDaemonViaCli();
+  // 确保 daemon 在线（已在线则跳过 doctor，避免触发多余 Chrome 窗口）
+  await ensureDaemon();
   await server.connect(new StdioServerTransport());
   process.stderr.write(`[opencli-mcp] ready (${TOOLS.length} tools, daemon=${DAEMON_URL}, workspace=${WORKSPACE})\n`);
 })().catch((e) => {
